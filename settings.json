@@ -2,7 +2,8 @@
   "appSettings": {
     "stage": {
       "clearColor": "0xff000000",
-      "useImageWorker": true
+      "useImageWorker": true,
+      "pauseRafLoopOnIdle": true
     },
     "debug": false
   },
