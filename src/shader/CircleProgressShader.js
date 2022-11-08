@@ -57,11 +57,9 @@ export default class CircleProgressShader extends Lightning.shaders.WebGLDefault
         this._setUniform('period', this._period, this.gl.uniform1f);
         this._setUniform('angle', this._angle, this.gl.uniform1f);
         this._setUniform('smooth', this._smooth, this.gl.uniform1f);
-        this._setUniform('color', new Float32Array(lng.StageUtils.getRgbaComponentsNormalized(this._color)), this.gl.uniform4fv)
-        this._setUniform('backgroundColor', new Float32Array(lng.StageUtils.getRgbaComponentsNormalized(this._backgroundColor)), this.gl.uniform4fv)
-        this._setUniform('resolution', new Float32Array([owner._w, owner._h]), this.gl.uniform2fv)
-
-        this.redraw()
+        this._setUniform('color', new Float32Array(lng.StageUtils.getRgbaComponentsNormalized(this._color)), this.gl.uniform4fv);
+        this._setUniform('backgroundColor', new Float32Array(lng.StageUtils.getRgbaComponentsNormalized(this._backgroundColor)), this.gl.uniform4fv);
+        this._setUniform('resolution', new Float32Array([owner._w, owner._h]), this.gl.uniform2fv);
     }
 
 }
