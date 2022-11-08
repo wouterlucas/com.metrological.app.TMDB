@@ -39,31 +39,6 @@ export default class App extends Router.App {
             }
         });
 
-        const times = [];
-        let fps;
-        let totalFps = 0;
-        let totalFrames = 0;
-
-        const refreshLoop = ()=> {
-            window.requestAnimationFrame(() => {
-                const now = performance.now();
-                while (times.length > 0 && times[0] <= now - 1000) {
-                    times.shift();
-                }
-                times.push(now);
-                fps = times.length;
-
-
-                this.tag("Fps").tag("Amount").text= `${fps}`
-                totalFps += fps;
-                totalFrames++;
-                this.tag("Average").tag("Amount").text = `${Math.round(totalFps/totalFrames)}`
-
-                refreshLoop();
-            });
-        }
-
-        refreshLoop();
     }
 
     static _template() {
@@ -76,37 +51,6 @@ export default class App extends Router.App {
                     type: Background
                 },
                 ...super._template(),
-                Holder:{ zIndex:9999,
-                    Fps:{
-                        mountX: 1, x: 1760, y: 40,
-                        Amount: {
-                            text:{
-                                text:'-', fontFace: "regular", fontSize: 24
-                            }
-                        },
-                        Unit: {
-                            x: 54, y: 6,
-                            text:{
-                                text:'FPS', fontFace: "regular", textColor: 0xffc3c3c3, fontSize: 14
-                            }
-                        }
-                    },
-                    Average:{
-                        mountX: 1, x: 1760, y: 74,
-                        Amount: {
-                            text:{
-                                text:'-', fontFace: "regular", fontSize: 24
-                            }
-                        },
-                        Unit: {
-                            x: 54, y: 6,
-                            text:{
-                                text:'Avg. FPS', textColor: 0xffc3c3c3, fontFace: "regular", fontSize: 14
-                            }
-                        }
-                    }
-
-                },
                 Widgets: {
                     Menu:{
                         type: Menu, x: 90, y: 90, zIndex: 99, visible: false, lineOffset: 24,
